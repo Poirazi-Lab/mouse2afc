@@ -1,10 +1,10 @@
 # mouse2afc
 
-A rewrite of the [Mouse2AFC protocol](https://github.com/marionbosc/Mouse2AFC/tree/larkum_lab) by [Larkum Lab](https://www.projekte.hu-berlin.de/en/larkum/neurocure), for [PyBpod](https://github.com/ckarageorgkaneen/pybpod).
+An implementation of [Mouse2AFC protocol](https://github.com/marionbosc/Mouse2AFC/tree/larkum_lab) for [PyBpod](https://github.com/ckarageorgkaneen/pybpod).
 
 ## Usage
 
-To use the protocol on PyBpod, see the [GUIDE](./GUIDE.md).
+To use the protocol, see the [GUIDE](./GUIDE.md).
 
 ## Acknowledgements
 

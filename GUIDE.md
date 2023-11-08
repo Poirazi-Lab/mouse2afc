@@ -79,7 +79,13 @@ python utils/install.py  # may take a few minutes
 ### 7. Clone mouse2afc github repository
 Clone outside of `<REPONAME>`
 ```bash
-git clone https://github.com/HenryJFlynn/mouse2afc.git mouse2afc
+git clone https://github.com/Poirazi-Lab/mouse2afc.git
+```
+
+or if you want to clone a fork of the project:
+
+```bash
+git clone https://github.com/<USERNAME>/mouse2afc.git
 ```
 
 ### 8. Install mouse2afc

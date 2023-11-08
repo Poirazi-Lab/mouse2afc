@@ -3,14 +3,32 @@ This guide is a modified version of [PyBpod's Installation Guide](https://pybpod
 
 # Installation
 
-### 1. Create environment
-Do steps 1-3 from [Installation for Developers](https://pybpod.readthedocs.io/en/v1.8.1/getting-started/install.html#installation-for-developers)
+### 0. Create environment
+Do steps 1-2 from [Installation for Developers](https://pybpod.readthedocs.io/en/v1.8.1/getting-started/install.html#installation-for-developers)
 
 **NOTE: If using Windows 11:**
 - Before executing step 2 of the Installation for Developers, open the Windows 10 yml file and delete `sqlite=3.19.3=vc14_1`,`jpeg=9b=vc14_2`,`qt=5.6.2=vc14_1`,`matplotlib=2.0.2=np113py36_0` and `tk=8.5.18=vc14_0`
 - After activating the environment in step 3 of the Installatin for Developers:
 ```bash
 conda install jpeg=9b qt=5.6.2 matplotlib=2.0.2 tk --channel conda-forge --channel anaconda --channel defaults
+```
+
+### 1. Activate conda environment
+
+```bash
+conda activate pybpod-environment
+```
+
+**Note: If invalid choice error occurs:**
+Before activation, run:
+```bash
+conda init <SHELL_NAME>
+```
+
+e.g.
+
+```bash
+conda init bash
 ```
 
 ### 2. Verify conda environment is activated

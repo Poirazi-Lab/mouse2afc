@@ -3,17 +3,41 @@ This guide is a modified version of [PyBpod's Installation Guide](https://pybpod
 
 # Installation
 
-### 1. Create environment
-Do steps 1-3 from [Installation for Developers](https://pybpod.readthedocs.io/en/v1.8.1/getting-started/install.html#installation-for-developers)
+### 1. Install conda
+Download & install [Anaconda](https://www.anaconda.com/download/) or [Miniconda](https://conda.io/miniconda.html).
+
+### 2.Download the environment configuration file for your Operating System and create a virtual environment with it by executing the following commands in the “Anaconda Prompt”.
+Windows 10 or 11: [environment-windows-10.yml](https://raw.githubusercontent.com/pybpod/pybpod/master/utils/environment-windows-10.yml) (right click->Save Link as):
 
 **NOTE: If using Windows 11:**
 - Before executing step 2 of the Installation for Developers, open the Windows 10 yml file and delete `sqlite=3.19.3=vc14_1`,`jpeg=9b=vc14_2`,`qt=5.6.2=vc14_1`,`matplotlib=2.0.2=np113py36_0` and `tk=8.5.18=vc14_0`
-- After activating the environment in step 3 of the Installatin for Developers:
+- After activating the environment in step 3 of the Installation for Developers:
 ```bash
 conda install jpeg=9b qt=5.6.2 matplotlib=2.0.2 tk --channel conda-forge --channel anaconda --channel defaults
 ```
 
-### 2. Verify conda environment is activated
+```bash
+conda env create -f environment-windows-10.yml
+```
+
+Ubuntu 17.10 and up: [environment-ubuntu-17.10.yml](https://raw.githubusercontent.com/pybpod/pybpod/master/utils/environment-ubuntu-17.10.yml) (right click->Save Link as):
+
+```bash
+conda env create -f environment-ubuntu-17.10.yml
+```
+
+Mac OSx: [environment-macOSx.yml](https://raw.githubusercontent.com/pybpod/pybpod/master/utils/environment-macOSx.yml) (right click->Save Link as):
+
+```bash
+conda env create -f environment-macOSx.yml
+```
+
+### 3. Activate the environment you just created.
+```bash
+conda activate pybpod-environment
+```
+
+### 4. Verify conda environment is activated
 ```bash
 conda env list
 ```
@@ -26,11 +50,11 @@ pybpod-environment     */...
 ```
 with the asterik `*` next to `pybpod-environment`
 
-### 3. Verify the executable is inside the conda environment path
+### 5. Verify the executable is inside the conda environment path
 ```bash
 pip --version
 ```
-yeilds
+yields
 #### Linux: 
 ```bash
 pip 9.0.1 from /home/user/anaconda3/envs/pybpod-environment/lib/python3.6/site-packages/pip (python 3.6)
@@ -40,31 +64,33 @@ pip 9.0.1 from /home/user/anaconda3/envs/pybpod-environment/lib/python3.6/site-p
 pip 18.1 from C:\Users\user\miniconda3\envs\pybpod-environment\lib\site-packages\pip (python 3.6)
 ```
 
-### 4. Upgrade pip
+### 6. Upgrade pip
 
 ```bash
 pip install --upgrade pip
 ```
 
-### 5. Clone pybpod github respository 
+### 7. Clone pybpod github respository
 
 ```bash
-git clone --recurse-submodules -j8 https://github.com/ckarageorgkaneen/pybpod <REPONAME>
+git clone --recurse-submodules -j8 https://github.com/ckarageorgkaneen/pybpod pybpod
 ```
-Change`<REPONAME>` to whatever you like. The repository will be cloned into a new folder called `<REPONAME>`
-### 6. Install pybpod
+The repository will be cloned into a new folder called "pybpod".
+
+### 8. Install pybpod
 
 ```bash
-cd <REPONAME>
+cd pybpod
 python utils/install.py  # may take a few minutes
 ```
-### 7. Clone mouse2afc github repository
-Clone outside of `<REPONAME>`
+### 9. Clone mouse2afc github repository
+Clone outside of pybpod
 ```bash
+cd ../
 git clone https://github.com/HenryJFlynn/mouse2afc.git mouse2afc
 ```
 
-### 8. Install mouse2afc
+### 10. Install mouse2afc
 ```bash
 cd mouse2afc
 pip install -e .
@@ -75,12 +101,12 @@ pip install -e .
 ### 1. Start the pybpod GUI.
 #### Linux:
 ```bash
-cd <REPONAME>
+cd mouse2afc
 python -c 'import pybpodgui_plugin.__main__ as Main; Main.start()'
 ```
 #### Windows:
 ```bash
-cd <REPONAME>
+cd mouse2afc
 python -c "import pybpodgui_plugin.__main__ as Main; Main.start()"
 ```
 ![image](https://github.com/HenryJFlynn/mouse2afc/assets/130571023/520fb3cd-6d37-4749-9103-3b93f2294cc7)
@@ -113,13 +139,13 @@ Click `Save` and close the program.
 ### 1. Run Pybpod
 #### Linux:
 ```bash
-cd <REPONAME>
+cd mouse2afc
 python -c 'import pybpodgui_plugin.__main__ as Main; Main.start()'
 ```
 
 #### Windows:
 ```bash
-cd <REPONAME>
+cd mouse2afc
 python -c "import pybpodgui_plugin.__main__ as Main; Main.start()"
 ```
 
@@ -140,6 +166,11 @@ In the `Projects` window, go to `Bpod boards`, select `Default-Box` then in the 
 and click `Console`:
 
 ![image](https://github.com/HenryJFlynn/mouse2afc/assets/130571023/ae4e52e0-aabc-4dc2-acc8-baae1e36198e)
+
+### Note about emulator mode in Pybpod:
+If you wish to test a protocol without connecting to a Bpod:
+1. Instead of doing step four, check `Emulator mode`
+2. Under `Protocols`, open `Mouse2AFC_` and edit line 6 to be `bpod=Bpod(emulator_mode=True`)
 
 ### 5. Assign subjects to setup
 In the `Projects` window, under `Subjects`, click on `Default-Subject`. If not already selected, click on the dropdown widget next to `Setup` and select the setup you would like this mouse to use:
@@ -168,11 +199,6 @@ Click `Save`, click `Run Protocol`, select the appropriate parameters in the tas
 
 ## 10. Stop the experiment
 When done using, click `Stop` or `Kill`, and then `Save`.
-
-### Note about emulator mode in Pybpod:
-If you wish to test a protocol without connecting to a Bpod:
-1. Instead of doing step five, check `Emulator mode`
-2. Under `Protocols`, open `Mouse2AFC_` and edit line 6 to be `bpod=Bpod(emulator_mode=True`)
 
 ### Note about examples
 The examples are meant to be run outside of pybpod, inside of your IDE

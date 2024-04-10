@@ -119,7 +119,7 @@ SETTINGS_PRIORITY = 0
 
 GENERIC_EDITOR_PLUGINS_LIST = ['pybpodgui_plugin', 'pybpod_gui_plugin_emulator']
 
-PYBPOD_SESSION_PATH = 'PYBPOD_SESSION_PATH' 
+PYBPOD_SESSION_PATH = '<YOUR_SESSION_PATH>'
 
 TARGET_BPOD_FIRMWARE_VERSION = "22"
 EMULATOR_BPOD_MACHINE_TYPE = 1
@@ -129,7 +129,7 @@ BPOD_WIRED_PORTS_ENABLED = [True, True, True, True]
 BPOD_BEHAVIOR_PORTS_ENABLED = [True, True, True, False, False, False, False, False]
 ```
 
-replace `PYBPOD_SESSION_PATH` with the path of the folder you want the session to be saved into. (e.g. Linux: `/home/user/Documents/mouse2afc_sessions`, Windows: `"C:\\Users\\mouse2afc\\mouse2afc_sessions"`)
+**AND** replace `<YOUR_SESSION_PATH>` with the path of the folder you want the session to be saved into. (e.g. Linux: `/home/user/Documents/mouse2afc_sessions`, Windows: `"C:\\Users\\mouse2afc\\mouse2afc_sessions"`)
 
 ### 3. Save the changes
 Click `Save` and close the program.

@@ -5,5 +5,5 @@ setuptools.setup(name='Mouse2AFC',
       description='BPod Mouse2AFC Protocol',
       url='https://github.com/HenryJFlynn/mouse2afc',
       packages=setuptools.find_packages(),
-      python_requires='3.6'
+      python_requires='==3.6.3',
       )

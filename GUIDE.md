@@ -87,7 +87,7 @@ python utils/install.py  # may take a few minutes
 Clone outside of pybpod
 ```bash
 cd ../
-git clone https://github.com/HenryJFlynn/mouse2afc.git mouse2afc
+git clone https://github.com/Poirazi-Lab/mouse2afc.git mouse2afc
 ```
 
 ### 10. Install mouse2afc

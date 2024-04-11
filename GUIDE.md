@@ -101,12 +101,10 @@ pip install -e .
 ### 1. Start the pybpod GUI.
 #### Linux:
 ```bash
-cd mouse2afc
 python -c 'import pybpodgui_plugin.__main__ as Main; Main.start()'
 ```
 #### Windows:
 ```bash
-cd mouse2afc
 python -c "import pybpodgui_plugin.__main__ as Main; Main.start()"
 ```
 ![image](https://github.com/HenryJFlynn/mouse2afc/assets/130571023/520fb3cd-6d37-4749-9103-3b93f2294cc7)
@@ -139,13 +137,11 @@ Click `Save` and close the program.
 ### 1. Run Pybpod
 #### Linux:
 ```bash
-cd mouse2afc
 python -c 'import pybpodgui_plugin.__main__ as Main; Main.start()'
 ```
 
 #### Windows:
 ```bash
-cd mouse2afc
 python -c "import pybpodgui_plugin.__main__ as Main; Main.start()"
 ```
 

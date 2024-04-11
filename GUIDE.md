@@ -98,15 +98,12 @@ pip install -e .
 
 # Setting Up the Protocol in PyBpod
 
-### 1. Start the pybpod GUI.
-#### Linux:
+### 1. Start PyBpod GUI
+
 ```bash
 python -c 'import pybpodgui_plugin.__main__ as Main; Main.start()'
 ```
-#### Windows:
-```bash
-python -c "import pybpodgui_plugin.__main__ as Main; Main.start()"
-```
+
 ![image](https://github.com/HenryJFlynn/mouse2afc/assets/130571023/520fb3cd-6d37-4749-9103-3b93f2294cc7)
 
 ### 2. Editing user settings
@@ -134,15 +131,10 @@ Click `Save` and close the program.
 
 # Running the protocol in PyBpod
 
-### 1. Run Pybpod
-#### Linux:
+### 1. Start PyBpod GUI
+
 ```bash
 python -c 'import pybpodgui_plugin.__main__ as Main; Main.start()'
-```
-
-#### Windows:
-```bash
-python -c "import pybpodgui_plugin.__main__ as Main; Main.start()"
 ```
 
 ### 2. Open project folder 

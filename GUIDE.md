@@ -187,6 +187,3 @@ Click `Save`, click `Run Protocol`, select the appropriate parameters in the tas
 
 ## 10. Stop the experiment
 When done using, click `Stop` or `Kill`, and then `Save`.
-
-### Note about examples
-The examples are meant to be run outside of pybpod, inside of your IDE

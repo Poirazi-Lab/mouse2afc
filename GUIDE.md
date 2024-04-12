@@ -6,35 +6,36 @@ This guide is a modified version of [PyBpod's Installation Guide](https://pybpod
 ### 1. Install conda
 Download & install [Anaconda](https://www.anaconda.com/download/) or [Miniconda](https://conda.io/miniconda.html).
 
-### 2.Download the environment configuration file for your Operating System and create a virtual environment with it by executing the following commands in the “Anaconda Prompt”.
-Windows 10 or 11: [environment-windows-10.yml](https://raw.githubusercontent.com/pybpod/pybpod/master/utils/environment-windows-10.yml) (right click->Save Link as):
+### 2. Download the appropriate environment configuration file and create the virtual environment:
+Windows 10 or 11: [environment-windows-10.yml](https://raw.githubusercontent.com/pybpod/pybpod/master/utils/environment-windows-10.yml):
 
-**NOTE: If using Windows 11:**
-- Before executing step 2 of the Installation for Developers, open the Windows 10 yml file and delete `sqlite=3.19.3=vc14_1`,`jpeg=9b=vc14_2`,`qt=5.6.2=vc14_1`,`matplotlib=2.0.2=np113py36_0` and `tk=8.5.18=vc14_0`
-- After activating the environment in step 3 of the Installation for Developers:
-```bash
-conda install jpeg=9b qt=5.6.2 matplotlib=2.0.2 tk --channel conda-forge --channel anaconda --channel defaults
-```
+**Only if using Windows 11:** Before creating the environment: open `environment-windows-10.yml` and delete `sqlite=3.19.3=vc14_1`,`jpeg=9b=vc14_2`,`qt=5.6.2=vc14_1`,`matplotlib=2.0.2=np113py36_0` and `tk=8.5.18=vc14_0`
 
 ```bash
 conda env create -f environment-windows-10.yml
 ```
 
-Ubuntu 17.10 and up: [environment-ubuntu-17.10.yml](https://raw.githubusercontent.com/pybpod/pybpod/master/utils/environment-ubuntu-17.10.yml) (right click->Save Link as):
+Ubuntu 17.10 and up: [environment-ubuntu-17.10.yml](https://raw.githubusercontent.com/pybpod/pybpod/master/utils/environment-ubuntu-17.10.yml):
 
 ```bash
 conda env create -f environment-ubuntu-17.10.yml
 ```
 
-Mac OSx: [environment-macOSx.yml](https://raw.githubusercontent.com/pybpod/pybpod/master/utils/environment-macOSx.yml) (right click->Save Link as):
+Mac OSx: [environment-macOSx.yml](https://raw.githubusercontent.com/pybpod/pybpod/master/utils/environment-macOSx.yml):
 
 ```bash
 conda env create -f environment-macOSx.yml
 ```
 
-### 3. Activate the environment you just created.
+### 3. Activate the environment you just created
 ```bash
 conda activate pybpod-environment
+```
+
+**Only if using Windows 11:** After activating the environment in step 3 of the Installation for Developers:
+
+```bash
+conda install jpeg=9b qt=5.6.2 matplotlib=2.0.2 tk --channel conda-forge --channel anaconda --channel defaults
 ```
 
 ### 4. Verify conda environment is activated

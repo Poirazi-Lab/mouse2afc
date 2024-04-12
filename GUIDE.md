@@ -159,7 +159,7 @@ and click `Console`:
 ### Note about emulator mode in Pybpod:
 If you wish to run the protocol in emulator mode (e.g. if you don't have the physical device):
 1. Instead of selecting a serial port, check `Emulator mode`
-2. Under `Protocols`, open `Mouse2AFC` and edit line 6 to be `bpod=Bpod(emulator_mode=True`) and click `Save`
+2. Under `Protocols`, open `Mouse2AFC` and edit line 6 to be `bpod=Bpod(emulator_mode=True)` and click `Save`
 
 ### 5. Assign subjects to setup
 In the `Projects` window, under `Subjects`, click on `Default-Subject`. If not already selected, click on the dropdown widget next to `Setup` and select the setup you would like this mouse to use:

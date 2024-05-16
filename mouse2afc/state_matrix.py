@@ -171,9 +171,17 @@ def single_experiment_stimulus(self,task_parameters,data,i_trial,experiment_leve
         _cont_deliver_stimulus = []
         _stop_stimulus = [('SoftCode', 6)]
     elif experiment_level == ExperimentType.no_stimulus:
-        _deliver_stimulus = []
-        _cont_deliver_stimulus = []
-        _stop_stimulus = []
+        left_pwm_stim = round(
+            data.custom.trials.light_intensity_left[i_trial] * self.left_pwm / 100)
+        right_pwm_stim = round(
+            data.custom.trials.light_intensity_right[
+                i_trial] * self.right_pwm / 100)
+        _deliver_stimulus = [
+            (pwm_str(6), left_pwm_stim),
+            (pwm_str(8), right_pwm_stim)
+        ]
+        _cont_deliver_stimulus = _deliver_stimulus
+        _stop_stimulus =  []
     else:
         error('Unexpected Experiment Type')
 

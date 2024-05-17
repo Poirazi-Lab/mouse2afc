@@ -171,6 +171,10 @@ def single_experiment_stimulus(self,task_parameters,data,i_trial,experiment_leve
         _cont_deliver_stimulus = []
         _stop_stimulus = [('SoftCode', 6)]
     elif experiment_level == ExperimentType.no_stimulus:
+        _deliver_stimulus = []
+        _cont_deliver_stimulus = []
+        _stop_stimulus =  []
+    elif experiment_level == ExperimentType.no_light:
         left_pwm_stim = round(
             data.custom.trials.light_intensity_left[i_trial] * self.left_pwm / 100)
         right_pwm_stim = round(
@@ -244,9 +248,10 @@ class StateMatrix(StateMachine):
         cont_deliver_stimulus = list(itertools.chain.from_iterable(stimuli[1]))
         stop_stimulus = list(itertools.chain.from_iterable(stimuli[2]))
         
-        center_stim =[]
-        if task_parameters.secondary_experiment_type == ExperimentType.no_stimulus:
+        center_stim =[(pwm_str(center_port), center_pwm)]
+        if task_parameters.secondary_experiment_type == ExperimentType.no_light:
             center_stim = [(pwm_str(7), center_pwm)] + [(pwm_str(center_port), center_pwm)]
+
 
         if task_parameters.stim_after_poke_out == StimAfterPokeOut.not_used:
             wait_for_decision_stim = stop_stimulus

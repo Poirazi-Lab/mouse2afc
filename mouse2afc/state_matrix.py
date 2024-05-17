@@ -243,6 +243,10 @@ class StateMatrix(StateMachine):
         deliver_stimulus = list(itertools.chain.from_iterable(stimuli[0]))
         cont_deliver_stimulus = list(itertools.chain.from_iterable(stimuli[1]))
         stop_stimulus = list(itertools.chain.from_iterable(stimuli[2]))
+        
+        center_stim =[]
+        if task_parameters.secondary_experiment_type == ExperimentType.no_stimulus:
+            center_stim = [(pwm_str(7), center_pwm)] + [(pwm_str(center_port), center_pwm)]
 
         if task_parameters.stim_after_poke_out == StimAfterPokeOut.not_used:
             wait_for_decision_stim = stop_stimulus
@@ -410,7 +414,7 @@ class StateMatrix(StateMachine):
                        state_timer=0,
                        state_change_conditions={
                            center_port_in: str(MatrixState.PreStimReward)},
-                       output_actions=[(pwm_str(center_port), center_pwm)])
+                       output_actions=center_stim)
         self.add_state(state_name=str(MatrixState.PreStimReward),
                        state_timer=iff(task_parameters.pre_stim_delay_cntr_reward,
                                        get_valve_times(task_parameters.pre_stim_delay_cntr_reward,

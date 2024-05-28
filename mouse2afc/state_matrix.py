@@ -181,9 +181,14 @@ def single_experiment_stimulus(self,task_parameters,data,i_trial,experiment_leve
             data.custom.trials.light_intensity_right[
                 i_trial] * self.right_pwm / 100)
         _deliver_stimulus = [
-            (pwm_str(6), left_pwm_stim),
-            (pwm_str(8), right_pwm_stim)
+            (pwm_str(self.left_port), left_pwm_stim),
+            (pwm_str(self.right_port), right_pwm_stim)
         ]
+        if task_parameters.secondary_experiment_type == ExperimentType.no_light:
+            _deliver_stimulus = [
+                (pwm_str(6), left_pwm_stim),
+                (pwm_str(8), right_pwm_stim)
+            ]
         _cont_deliver_stimulus = _deliver_stimulus
         _stop_stimulus =  []
     else:
@@ -311,8 +316,16 @@ class StateMatrix(StateMachine):
         # GUI option Reward After Min Sampling
         # If center - reward is enabled, then a reward is given once min_sample
         # is over and no further sampling is given.
+        if task_parameters.primary_experiment_type == ExperimentType.no_light:
+            reward_valve = []
+        else:
+            reward_valve = [('Valve', center_valve)]
+            print(f'OTHER REWARD = {reward_valve}')
+        print(f'REWARD = {reward_valve}')
+        print(f'Primary experiment type: {task_parameters.primary_experiment_type}')
+        
         reward_center_port = iff(task_parameters.reward_after_min_sampling,
-                               [('Valve', center_valve)] + stop_stimulus,
+                               reward_valve + stop_stimulus,
                                cont_deliver_stimulus)
         timer_cprd = iff(
             task_parameters.reward_after_min_sampling, center_valve_time,
@@ -427,7 +440,7 @@ class StateMatrix(StateMachine):
                        state_change_conditions={
                            Bpod.Events.Tup:str(MatrixState.TriggerWaitForStimulus)},
                        output_actions=iff(task_parameters.pre_stim_delay_cntr_reward,
-                                          [('Valve', center_valve)], []))
+                                          [reward_valve], []))
         # The next method is useful to close the 2 - photon shutter. It is
         # enabled by setting Optogenetics StartState to this state and end
         # state to ITI.
@@ -540,7 +553,7 @@ class StateMatrix(StateMachine):
                        state_timer=valve_time,
                        state_change_conditions={
                            Bpod.Events.Tup: str(MatrixState.WaitRewardOut)},
-                       output_actions=(wait_feedback_stim + [('Valve', valve_code)]))
+                       output_actions=(wait_feedback_stim + reward_valve))
         self.add_state(state_name=str(MatrixState.WaitRewardOut),
                        state_timer=1,
                        state_change_conditions={

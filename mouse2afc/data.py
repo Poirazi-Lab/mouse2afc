@@ -164,6 +164,9 @@ class CustomData:
         elif self.task_parameters.primary_experiment_type == \
                 ExperimentType.no_stimulus:
             DV = 0
+        elif self.task_parameters.primary_experiment_type == \
+                ExperimentType.no_light:
+            DV = calc_light_intensity(self, trial_num)
         else:
             error('Unexpected Experiment Type')
         self.trials.DV[trial_num] = DV

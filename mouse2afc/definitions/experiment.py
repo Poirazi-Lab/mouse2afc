@@ -7,3 +7,4 @@ class ExperimentType(SpecialEnum):
     grating_orientation = 3
     random_dots = 4
     no_stimulus = 5
+    no_light = 6
